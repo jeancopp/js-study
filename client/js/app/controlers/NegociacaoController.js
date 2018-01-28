@@ -8,20 +8,25 @@ class NegociacaoController{
             ,data : $("#data")
         };
 
-        this.negociacoes = new Lista();
-        
+        this._negociacoes = new Lista();
+
+        this._view = new NegociacoesView($("#negociacoes"));
+        this._view.update(this._negociacoes.valores);
+
         Object.freeze(this);
     }
 
     adicionar(event){
         event.preventDefault();
 
-        this.negociacoes.adicionar(new Negociacao(
+        this._negociacoes.adicionar(new Negociacao(
             DataHelper.textoParaData(this._inputs.data.value)
-            ,this._inputs.quantidade
-            ,this._inputs.valor
+            ,this._inputs.quantidade.value
+            ,this._inputs.valor.value
         ));
         this._limparForm();        
+
+        this._view.update(this._negociacoes.valores);
     }   
 
     _limparForm(){

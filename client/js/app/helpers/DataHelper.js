@@ -13,7 +13,7 @@ class DataHelper{
     }
 
     static dataParaTexto(data){
-        return `${a.getDate()}/${a.getMonth()+1}/${a.getFullYear()}`;
+        return `${data.getDate()}/${data.getMonth()+1}/${data.getFullYear()}`;
     }
 
 }
